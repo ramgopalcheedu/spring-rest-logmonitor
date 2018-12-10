@@ -7,6 +7,7 @@ import java.time.Instant;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.client.ClientHttpRequestExecution;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
@@ -42,10 +43,10 @@ public class LoggerInterceptor implements ClientHttpRequestInterceptor {
 		logger.debug("Status Text :  {}",response.getStatusText());
 		logger.debug("Headers     :  {}",response.getHeaders());
 		
-		if(isNotBinaryContent(response)) {
-			logger.debug("Response Body: {}",StreamUtils.copyToString(response.getBody(), Charset.defaultCharset()));
-		}else {
+		if(isBinaryContent(response)) {
 			logger.debug("Response Body: {}","<Binary Content>");
+		}else {
+			logger.debug("Response Body: {}",StreamUtils.copyToString(response.getBody(), Charset.defaultCharset()));
 		}
 		
 		logger.debug("===================response end================================");
@@ -53,9 +54,10 @@ public class LoggerInterceptor implements ClientHttpRequestInterceptor {
 		
 	}
 
-	private boolean isNotBinaryContent(ClientHttpResponse response) {
-		// TODO Auto-generated method stub
-		return false;
+	private boolean isBinaryContent(ClientHttpResponse response) {
+		
+		return response.getHeaders().get(HttpHeaders.CONTENT_TYPE).stream().anyMatch(val -> (val.contains("binary") || 
+				val.contains("stream")));
 	}
 
 	private void printRequest(HttpRequest request, byte[] body) {
