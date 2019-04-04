@@ -30,15 +30,6 @@
             overflow: auto;
         }
 
-        table.dataTable.select tbody tr,
-        table.dataTable thead th:first-child {
-            cursor: pointer;
-        }
-
-       /* tr.group,
-        tr.group:hover {
-            background-color: #ddd !important;
-        }*/
     </style>
 
     <!--  <link rel="stylesheet" href="dist/themes/default/style.min.css" /> -->
@@ -46,11 +37,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/select/1.3.0/js/dataTables.select.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <!--  <script src="dist/jstree.js"></script> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.0/css/select.dataTables.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -64,29 +56,11 @@
         <span class="navbar-brand mb-0 h1">WireCenters</span>
     </nav>
 
-
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Alert</h4>
-                </div>
-                <div class="modal-body">
-                    <p>You Current VSAP Selection is not matching Previous Selection</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-
-        </div>
+    <div id="dialog" title="Validation dialog" style="display:none;">
+        <p>Your Selection is not matching your previous VSAP selections.</p>
     </div>
 
-    <div class="card text-left">
+    <div class="card text-center">
    <%--     <div class="card-header">
             <div class="input-group">
                 <input type="text" class="form-control hasclear" id="search-input" placeholder="Search">
@@ -144,12 +118,102 @@
             </tr>
             <tr>
                 <td></td>
-                <td>215456</td>
+                <td>215457</td>
                 <td>up</td>
                 <td>Newark</td>
                 <td>downtown</td>
                 <td><a  target="_blank" href="http://www.google.com/maps/place/49.46800006494457,17.11514008755796/@49.46800006494457,17.11514008755796,17z">Location</a></td>
                 <td>121212121212</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>215458</td>
+                <td>up</td>
+                <td>Newark</td>
+                <td>Eastnewark</td>
+                <td><a target="_blank" href="http://www.google.com/maps/place/49.46800006494457,17.11514008755796/@49.46800006494457,17.11514008755796,17z">Location</a></td>
+                <td>232323244243244</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>215459</td>
+                <td>up</td>
+                <td>Newark</td>
+                <td>Eastnewark</td>
+                <td><a target="_blank" href="http://www.google.com/maps/place/49.46800006494457,17.11514008755796/@49.46800006494457,17.11514008755796,17z">Location</a></td>
+                <td>232323244243244</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>2154511</td>
+                <td>up</td>
+                <td>Newark</td>
+                <td>Eastnewark</td>
+                <td><a target="_blank" href="http://www.google.com/maps/place/49.46800006494457,17.11514008755796/@49.46800006494457,17.11514008755796,17z">Location</a></td>
+                <td>232323244243244</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>21545232</td>
+                <td>up</td>
+                <td>Newark</td>
+                <td>Eastnewark</td>
+                <td><a target="_blank" href="http://www.google.com/maps/place/49.46800006494457,17.11514008755796/@49.46800006494457,17.11514008755796,17z">Location</a></td>
+                <td>232323244243244</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>2154562323</td>
+                <td>up</td>
+                <td>Newark</td>
+                <td>Eastnewark</td>
+                <td><a target="_blank" href="http://www.google.com/maps/place/49.46800006494457,17.11514008755796/@49.46800006494457,17.11514008755796,17z">Location</a></td>
+                <td>232323244243244</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>21545623234</td>
+                <td>up</td>
+                <td>Newark</td>
+                <td>Eastnewark</td>
+                <td><a target="_blank" href="http://www.google.com/maps/place/49.46800006494457,17.11514008755796/@49.46800006494457,17.11514008755796,17z">Location</a></td>
+                <td>232323244243244</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>215456243245</td>
+                <td>up</td>
+                <td>Newark</td>
+                <td>Eastnewark</td>
+                <td><a target="_blank" href="http://www.google.com/maps/place/49.46800006494457,17.11514008755796/@49.46800006494457,17.11514008755796,17z">Location</a></td>
+                <td>232323244243244</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>215453434346</td>
+                <td>up</td>
+                <td>Newark</td>
+                <td>Eastnewark</td>
+                <td><a target="_blank" href="http://www.google.com/maps/place/49.46800006494457,17.11514008755796/@49.46800006494457,17.11514008755796,17z">Location</a></td>
+                <td>232323244243244</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>215343242435456</td>
+                <td>up</td>
+                <td>Newark</td>
+                <td>Eastnewark</td>
+                <td><a target="_blank" href="http://www.google.com/maps/place/49.46800006494457,17.11514008755796/@49.46800006494457,17.11514008755796,17z">Location</a></td>
+                <td>232323244243244</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>21535342424456</td>
+                <td>up</td>
+                <td>Newark</td>
+                <td>Eastnewark</td>
+                <td><a target="_blank" href="http://www.google.com/maps/place/49.46800006494457,17.11514008755796/@49.46800006494457,17.11514008755796,17z">Location</a></td>
+                <td>232323244243244</td>
             </tr>
             <tr>
                 <td></td>
@@ -160,12 +224,66 @@
                 <td><a target="_blank" href="http://www.google.com/maps/place/49.46800006494457,17.11514008755796/@49.46800006494457,17.11514008755796,17z">Location</a></td>
                 <td>232323244243244</td>
             </tr>
+            <tr>
+                <td></td>
+                <td>215456</td>
+                <td>up</td>
+                <td>Newark</td>
+                <td>Eastnewark</td>
+                <td><a target="_blank" href="http://www.google.com/maps/place/49.46800006494457,17.11514008755796/@49.46800006494457,17.11514008755796,17z">Location</a></td>
+                <td>232323244243244</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>2154543434456</td>
+                <td>up</td>
+                <td>Newark</td>
+                <td>Eastnewark</td>
+                <td><a target="_blank" href="http://www.google.com/maps/place/49.46800006494457,17.11514008755796/@49.46800006494457,17.11514008755796,17z">Location</a></td>
+                <td>232323244243244</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>214545455456</td>
+                <td>up</td>
+                <td>Newark</td>
+                <td>Eastnewark</td>
+                <td><a target="_blank" href="http://www.google.com/maps/place/49.46800006494457,17.11514008755796/@49.46800006494457,17.11514008755796,17z">Location</a></td>
+                <td>232323244243244</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>24546463515456</td>
+                <td>up</td>
+                <td>Jersey</td>
+                <td>Groove</td>
+                <td><a target="_blank" href="http://www.google.com/maps/place/49.46800006494457,17.11514008755796/@49.46800006494457,17.11514008755796,17z">Location</a></td>
+                <td>232323244243244</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>21465646465456</td>
+                <td>up</td>
+                <td>Jersey</td>
+                <td>Hoboken</td>
+                <td><a target="_blank" href="http://www.google.com/maps/place/49.46800006494457,17.11514008755796/@49.46800006494457,17.11514008755796,17z">Location</a></td>
+                <td>232323244243244</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>21534343445456</td>
+                <td>up</td>
+                <td>Jersey</td>
+                <td>JerseyCity</td>
+                <td><a target="_blank" href="http://www.google.com/maps/place/49.46800006494457,17.11514008755796/@49.46800006494457,17.11514008755796,17z">Location</a></td>
+                <td>232323244243244</td>
+            </tr>
             </tbody>
         </table>
         </div>
 
 
-        <div class="card-footer">
+        <div class="card-footer bg-light">
             <form id="poledata" method="post" action="/update/">
                 <div class="form-group">
                     <label for="vsapJobNumber">VSAP Job Number</label>
@@ -189,12 +307,12 @@
         var rows_selected = [];
         var groupColumn = 3;
         var table = $('#treetable').DataTable({
-            /* columnDefs: [ {
-               orderable: false,
-               className: 'select-checkbox',
-               targets:   0
-           } ],*/
-            'columnDefs': [{
+            "scrollCollapse": true,
+            "scrollY":"400px",
+            "paging":false,
+            "ordering": false,
+            'columnDefs': [
+                {
                 'targets': 0,
                 'searchable': false,
                 'orderable': false,
@@ -205,9 +323,8 @@
             }],
             select: {
                 style: 'multi',
-                selector: 'td:first-child'
+                selector: 'td.chkRow:not(.not-selectable):last-child',
             },
-            order: [[ 1, 'asc' ]],
             "drawCallback": function(settings) {
                 var api = this.api();
                 var rows = api.rows({
@@ -222,7 +339,7 @@
 
                     if (last !== group) {
                         $(rows).eq(i).before(
-                            '<tr class="group"><td colspan="7">' + group + '</td></tr>'
+                            '<tr class="group"><td  class="font-weight-bold table-success" colspan="7">' + group + '</td></tr>'
                         );
 
                         last = group;
@@ -265,8 +382,8 @@
                 const vsapcheck = rows_selected.map(e => e.VsapNumber).indexOf(vsap);
 
                 if(rows_selected.length!==0 && vsapcheck===-1){
-                   // $("#myModal").modal();
-                    alert("You Current VSAP Selection is not matching Previous Selections");
+                    //alert("You Current VSAP Selection is not matching Previous Selections");
+                    $( "#dialog" ).dialog();
                     $(this).prop('checked', false);
                 }
 
@@ -358,6 +475,7 @@
             $('#treetable tbody tr td input[type="checkbox"]').each(function(){
                 $(this).prop('checked', false);
             });
+            rows_selected.splice(0,rows_selected.length);
         }
 
         function resetform(){ $("#poledata")[0].reset();}
